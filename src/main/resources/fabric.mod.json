@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "moretrapdoors",
+	"version": "${version}",
+
+	"name": "moretrapdoors",
+	"description": "This is a template for future mods",
+	"authors": [
+		"Fire_Horse27"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+
+	"license": "LGPL-3.0",
+
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.fire_horse27.moretrapdoors.MoreTrapdoors"
+		],
+		"fabric-datagen": [
+			"net.fire_horse27.moretrapdoors.MoreTrapdoorsDataGenerator"
+		],
+		"client": [
+			"net.fire_horse27.moretrapdoors.MoreTrapdoorsClient"
+		]
+	},
+
+	"depends": {
+		"fabricloader": ">=0.15.11",
+		"minecraft": "~1.21",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
