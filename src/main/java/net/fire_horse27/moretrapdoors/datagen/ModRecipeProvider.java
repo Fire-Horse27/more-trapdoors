@@ -43,7 +43,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 }
 
                 for (int i = 12; i < 14; i++) {
-                    createShaped(RecipeCategory.REDSTONE, TRAPDOORS.get(i), 6)
+                    createShaped(RecipeCategory.REDSTONE, TRAPDOORS.get(i), 2)
                             .pattern("###")
                             .pattern("###")
                             .input('#', MATERIAL.get(i))
