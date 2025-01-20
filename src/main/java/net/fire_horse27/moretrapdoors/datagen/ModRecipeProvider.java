@@ -3,7 +3,7 @@ package net.fire_horse27.moretrapdoors.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.RecipeExporter;
-import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.RecipeGenerator;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
@@ -28,24 +28,34 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             Items.COPPER_TRAPDOOR, Items.IRON_TRAPDOOR);
 
     @Override
-    public void generate(RecipeExporter exporter) {
-        for(int i = 0; i < 11; i++) {
-            ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, TRAPDOORS.get(i), 6)
-                    .pattern("###")
-                    .pattern("###")
-                    .group("wooden_trapdoor")
-                    .input('#', MATERIAL.get(i))
-                    .criterion(hasItem(MATERIAL.get(i)), conditionsFromItem(MATERIAL.get(i)))
-                    .offerTo(exporter);
-        }
+    protected RecipeGenerator getRecipeGenerator(RegistryWrapper.WrapperLookup registries, RecipeExporter exporter) {
+        return new RecipeGenerator(registries, exporter) {
+            @Override
+            public void generate() {
+                for (int i = 0; i < 11; i++) {
+                    createShaped(RecipeCategory.REDSTONE, TRAPDOORS.get(i), 6)
+                            .pattern("###")
+                            .pattern("###")
+                            .group("wooden_trapdoor")
+                            .input('#', MATERIAL.get(i))
+                            .criterion(hasItem(MATERIAL.get(i)), conditionsFromItem(MATERIAL.get(i)))
+                            .offerTo(exporter);
+                }
 
-        for(int i = 11; i < 13; i++) {
-            ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, TRAPDOORS.get(i), 6)
-                    .pattern("###")
-                    .pattern("###")
-                    .input('#', MATERIAL.get(i))
-                    .criterion(hasItem(MATERIAL.get(i)), conditionsFromItem(MATERIAL.get(i)))
-                    .offerTo(exporter);
-        }
+                for (int i = 11; i < 13; i++) {
+                    createShaped(RecipeCategory.REDSTONE, TRAPDOORS.get(i), 6)
+                            .pattern("###")
+                            .pattern("###")
+                            .input('#', MATERIAL.get(i))
+                            .criterion(hasItem(MATERIAL.get(i)), conditionsFromItem(MATERIAL.get(i)))
+                            .offerTo(exporter);
+                }
+            }
+        };
+    }
+
+    @Override
+    public String getName() {
+        return "ModRecipeProvider";
     }
 }
