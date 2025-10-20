@@ -58,6 +58,21 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .input('#', Items.IRON_INGOT)
                         .criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
                         .offerTo(exporter);
+
+                createShaped(RecipeCategory.REDSTONE, Items.COPPER_TRAPDOOR, 2)
+                        .pattern("###")
+                        .pattern("###")
+                        .input('#', Items.COPPER_INGOT)
+                        .criterion(hasItem(Items.COPPER_INGOT), conditionsFromItem(Items.COPPER_INGOT))
+                        .offerTo(exporter);
+
+                createShaped(RecipeCategory.MISC, Items.COPPER_BARS.unaffected(), 16)
+                        .pattern("# #")
+                        .pattern("# #")
+                        .pattern("# #")
+                        .input('#', Items.COPPER_INGOT)
+                        .criterion(hasItem(Items.COPPER_INGOT), conditionsFromItem(Items.COPPER_INGOT))
+                        .offerTo(exporter);
             }
         };
     }

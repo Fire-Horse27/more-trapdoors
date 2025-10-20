@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:iron_bars"
+        "recipe": "moretrapdoors:iron_bars"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:iron_bars"
+      "moretrapdoors:iron_bars"
     ]
   }
 }
